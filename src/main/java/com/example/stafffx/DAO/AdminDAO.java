@@ -1,6 +1,6 @@
 package com.example.stafffx.DAO;
 
-import com.example.stafffx.Model.AdminDetail;
+import com.example.stafffx.Model.Admin;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import java.util.List;
 public class AdminDAO {
 
     // Create a new admin record
-    public void createAdmin(AdminDetail admin) {
+    public void createAdmin(Admin admin) {
         String query = "INSERT INTO Admin (name, email, password, role) VALUES (?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, admin.getName());
@@ -23,12 +23,12 @@ public class AdminDAO {
     }
 
     // Read all admin records
-    public List<AdminDetail> readAllAdmins() {
-        List<AdminDetail> admins = new ArrayList<>();
+    public List<Admin> readAllAdmins() {
+        List<Admin> admins = new ArrayList<>();
         String query = "SELECT * FROM Admin";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query); ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                AdminDetail admin = new AdminDetail();
+                Admin admin = new Admin();
                 admin.setId(rs.getInt("id"));
                 admin.setName(rs.getString("name"));
                 admin.setEmail(rs.getString("email"));
@@ -43,7 +43,7 @@ public class AdminDAO {
     }
 
     // Update an existing admin record
-    public void updateAdmin(AdminDetail admin) {
+    public void updateAdmin(Admin admin) {
         String query = "UPDATE Admin SET name = ?, email = ?, password = ?, role = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, admin.getName());
@@ -69,14 +69,14 @@ public class AdminDAO {
     }
 
     // Find an admin by ID
-    public AdminDetail findAdminById(int id) {
+    public Admin findAdminById(int id) {
         String query = "SELECT * FROM Admin WHERE id = ?";
-        AdminDetail admin = null;
+        Admin admin = null;
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    admin = new AdminDetail();
+                    admin = new Admin();
                     admin.setId(rs.getInt("id"));
                     admin.setName(rs.getString("name"));
                     admin.setEmail(rs.getString("email"));

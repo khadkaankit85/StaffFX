@@ -1,7 +1,6 @@
 package com.example.stafffx.DAO;
 
-import com.example.stafffx.Model.EmployeeDetail;
-
+import com.example.stafffx.Model.Employee; // Assuming this has been modified to include new fields
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +8,15 @@ import java.util.List;
 public class EmployeeDAO {
 
     // Create a new employee record
-    public void createEmployee(EmployeeDetail employee) {
-        String query = "INSERT INTO Employee (name, email, password, role) VALUES (?, ?, ?, ?)";
+    public void createEmployee(Employee employee) {
+        String query = "INSERT INTO Employee (name, email, password, position, employee_id, amount) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, employee.getName());
             pstmt.setString(2, employee.getEmail());
             pstmt.setString(3, employee.getPassword());
-            pstmt.setString(4, employee.getRole());
+            pstmt.setString(4, employee.getPosition()); // Changed to position
+            pstmt.setInt(5, employee.getEmployeeId());
+            pstmt.setDouble(6, employee.getAmount());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -23,18 +24,21 @@ public class EmployeeDAO {
     }
 
     // Read all employee records
-    public List<EmployeeDetail> readAllEmployees() {
-        List<EmployeeDetail> employees = new ArrayList<>();
+    public List<Employee> readAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
         String query = "SELECT * FROM Employee";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query); ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
-                EmployeeDetail employee = new EmployeeDetail();
+                Employee employee = new Employee();
                 employee.setId(rs.getInt("id"));
                 employee.setName(rs.getString("name"));
                 employee.setEmail(rs.getString("email"));
                 employee.setPassword(rs.getString("password"));
-                employee.setRole(rs.getString("role"));
+                employee.setPosition(rs.getString("position")); // Changed to position
                 employee.setCreatedAt(rs.getTimestamp("created_at"));
+                employee.setEmployeeId(rs.getInt("employee_id"));
+                employee.setAmount(rs.getDouble("amount"));
+                employee.setPaymentDate(rs.getTimestamp("payment_date")); // Assuming you have this method
                 employees.add(employee);
             }
         } catch (SQLException e) {
@@ -44,14 +48,16 @@ public class EmployeeDAO {
     }
 
     // Update an existing employee record
-    public void updateEmployee(EmployeeDetail employee) {
-        String query = "UPDATE Employee SET name = ?, email = ?, password = ?, role = ? WHERE id = ?";
+    public void updateEmployee(Employee employee) {
+        String query = "UPDATE Employee SET name = ?, email = ?, password = ?, position = ?, employee_id = ?, amount = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, employee.getName());
             pstmt.setString(2, employee.getEmail());
             pstmt.setString(3, employee.getPassword());
-            pstmt.setString(4, employee.getRole());
-            pstmt.setInt(5, employee.getId());
+            pstmt.setString(4, employee.getPosition()); // Changed to position
+            pstmt.setInt(5, employee.getEmployeeId());
+            pstmt.setDouble(6, employee.getAmount());
+            pstmt.setInt(7, employee.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,20 +76,23 @@ public class EmployeeDAO {
     }
 
     // Find an employee by ID
-    public EmployeeDetail findEmployeeById(int id) {
+    public Employee findEmployeeById(int id) {
         String query = "SELECT * FROM Employee WHERE id = ?";
-        EmployeeDetail employee = null;
+        Employee employee = null;
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setInt(1, id);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    employee = new EmployeeDetail();
+                    employee = new Employee();
                     employee.setId(rs.getInt("id"));
                     employee.setName(rs.getString("name"));
                     employee.setEmail(rs.getString("email"));
                     employee.setPassword(rs.getString("password"));
-                    employee.setRole(rs.getString("role"));
+                    employee.setPosition(rs.getString("position")); // Changed to position
                     employee.setCreatedAt(rs.getTimestamp("created_at"));
+                    employee.setEmployeeId(rs.getInt("employee_id"));
+                    employee.setAmount(rs.getDouble("amount"));
+                    employee.setPaymentDate(rs.getTimestamp("payment_date")); // Assuming you have this method
                 }
             }
         } catch (SQLException e) {

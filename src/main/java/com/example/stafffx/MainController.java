@@ -17,14 +17,10 @@ public class MainController {
             // Load the FXML file
             Parent newSceneRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlName)));
             Stage currentStage = (Stage) refElement.getScene().getWindow();
-            System.out.println("New scene root loaded: " + newSceneRoot);
-
             // Create a new scene with the loaded FXML
-            Scene newScene = new Scene(newSceneRoot);
+            Scene newScene = new Scene(newSceneRoot,1100,720);
 
-            // Optional: Add CSS if needed
-            // String stylesheetPath = Objects.requireNonNull(getClass().getResource("/Styles/main.css")).toExternalForm();
-            // newScene.getStylesheets().add(stylesheetPath);
+            newScene.getStylesheets().add("file:target/classes/Styles/main.css");
 
             // Set the new scene on the current stage
             currentStage.setScene(newScene);

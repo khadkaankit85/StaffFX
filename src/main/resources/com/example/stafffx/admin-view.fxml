@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="500.0" prefWidth="700.0" spacing="15.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.AdminController">
+<VBox alignment="CENTER" prefHeight="797.0" prefWidth="1276.0" spacing="15.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.AdminController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <!-- Table View for Admin Records -->
-        <TableView fx:id="adminTable">
-            <columns>
-                <TableColumn text="ID" fx:id="idColumn"/>
-                <TableColumn text="Name" fx:id="nameColumn"/>
-                <TableColumn text="Position" fx:id="positionColumn"/>
-                <TableColumn text="Salary" fx:id="salaryColumn"/>
-            </columns>
-        </TableView>
-
-        <!-- Buttons for CRUD Operations -->
-        <Button text="Create" onAction="#handleCreateAction"/>
-        <Button text="Update" onAction="#handleUpdateAction"/>
-        <Button text="Delete" onAction="#handleDeleteAction"/>
-        <Button text="View" onAction="#handleViewAction"/>
-        <Button text="Back" onAction="#handleBackAction"/>
+        <Pane prefHeight="498.0" prefWidth="769.0">
+            <children>
+                <StackPane layoutX="269.0" layoutY="303.0" prefHeight="195.0" prefWidth="700.0" />
+                  <!-- Table View for Employee Records -->
+                  <TableView fx:id="employeeTable" layoutX="215.0" layoutY="107.0" prefHeight="196.0" prefWidth="809.0">
+                      <columns>
+                          <TableColumn fx:id="idColumn" prefWidth="36.0" text="ID" />
+                          <TableColumn fx:id="nameColumn" prefWidth="122.0" text="Name" />
+                          <TableColumn fx:id="positionColumn" prefWidth="155.0" text="Email" />
+                          <TableColumn fx:id="salaryColumn" prefWidth="159.0" text="Salary(Monthly)" />
+                          <TableColumn fx:id="salaryYearlyColumn" prefWidth="175.0" text="Salary(Yearly)" />
+                          <TableColumn fx:id="createdColumn" prefWidth="161.0" text="CreatedAt" />
+                      </columns>
+                  </TableView>
+            </children>
+        </Pane>
     </children>
 </VBox>

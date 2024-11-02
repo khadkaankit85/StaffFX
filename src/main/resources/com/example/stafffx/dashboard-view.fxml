@@ -2,16 +2,21 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="408.0" prefWidth="577.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="com.example.stafffx.Controller.DashboardController">
+<VBox alignment="CENTER" prefHeight="408.0" prefWidth="577.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.DashboardController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-        <Button text="Admin" onAction="#handleAdminButtonAction"/>
-        <Button text="Employee" onAction="#handleEmployeeButtonAction"/>
-        <Button text="Logout" onAction="#handleLogoutButtonAction"/>
-        <Button text="Exit" onAction="#handleExitButtonAction"/>
+      <Pane prefHeight="368.0" prefWidth="614.0">
+         <children>
+              <Button layoutX="85.0" layoutY="106.0" onAction="#handleAdminButtonAction" text="Admin" />
+              <Button layoutX="269.0" layoutY="106.0" onAction="#handleEmployeeButtonAction" text="Employee" />
+              <Button layoutX="14.0" layoutY="317.0" onAction="#handleExitButtonAction" text="Exit" />
+              <Button layoutX="452.0" layoutY="14.0" onAction="#handleLogoutButtonAction" text="Logout" />
+         </children>
+      </Pane>
     </children>
 </VBox>

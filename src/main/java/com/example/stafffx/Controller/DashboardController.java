@@ -9,17 +9,11 @@ import javafx.stage.Stage;
 public class DashboardController {
 
     // Reference to the MainController to use its methods
-    private MainController mainController;
+    private MainController mainController =new MainController();
 
-    // Default constructor
     public DashboardController() {
-        // No-argument constructor for FXML loader
     }
 
-    // Setter method for MainController
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
 
     @FXML
     public void handleAdminButtonAction(ActionEvent actionEvent) {

@@ -1,7 +1,7 @@
 package com.example.stafffx.Controller;
 
 import com.example.stafffx.DAO.EmployeeDAO;
-import com.example.stafffx.Model.EmployeeDetail;
+import com.example.stafffx.Model.Employee;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,18 +15,18 @@ import javafx.scene.control.Alert.AlertType;
 
 public class EmployeeController {
     @FXML
-    private TableView<EmployeeDetail> employeeTable;
+    private TableView<Employee> employeeTable;
 
     @FXML
-    private TableColumn<EmployeeDetail, Integer> idColumn;
+    private TableColumn<Employee, Integer> idColumn;
     @FXML
-    private TableColumn<EmployeeDetail, String> nameColumn;
+    private TableColumn<Employee, String> nameColumn;
     @FXML
-    private TableColumn<EmployeeDetail, String> departmentColumn; // Ensure EmployeeDetail has department
+    private TableColumn<Employee, String> departmentColumn; // Ensure EmployeeDetail has department
     @FXML
-    private TableColumn<EmployeeDetail, String> positionColumn; // Ensure EmployeeDetail has position
+    private TableColumn<Employee, String> positionColumn; // Ensure EmployeeDetail has position
     @FXML
-    private TableColumn<EmployeeDetail, Double> salaryColumn; // Ensure EmployeeDetail has salary
+    private TableColumn<Employee, Double> salaryColumn; // Ensure EmployeeDetail has salary
 
     @FXML
     private TextField idField;
@@ -40,16 +40,16 @@ public class EmployeeController {
     private TextField salaryField;
 
     private EmployeeDAO employeeDAO = new EmployeeDAO();
-    private ObservableList<EmployeeDetail> employeeList = FXCollections.observableArrayList();
+    private ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         // Initialize table columns
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department")); // Assuming it's in EmployeeDetail
-        positionColumn.setCellValueFactory(new PropertyValueFactory<>("position")); // Assuming it's in EmployeeDetail
-        salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary")); // Assuming it's in EmployeeDetail
+        departmentColumn.setCellValueFactory(new PropertyValueFactory<>("department"));
+        positionColumn.setCellValueFactory(new PropertyValueFactory<>("position"));
+        salaryColumn.setCellValueFactory(new PropertyValueFactory<>("salary"));
 
         // Load initial employee data
         updateTable();
@@ -58,7 +58,7 @@ public class EmployeeController {
     @FXML
     public void handleCreateAction(ActionEvent actionEvent) {
         if (validateFields()) {
-            EmployeeDetail employee = new EmployeeDetail();
+            Employee employee = new Employee();
             employee.setName(nameField.getText());
 
             // Uncomment and set these fields if needed
@@ -76,7 +76,7 @@ public class EmployeeController {
     public void handleUpdateAction(ActionEvent actionEvent) {
         if (validateFields() && !idField.getText().isEmpty()) {
             int id = Integer.parseInt(idField.getText());
-            EmployeeDetail employee = new EmployeeDetail();
+            Employee employee = new Employee();
             employee.setId(id);
             employee.setName(nameField.getText());
 

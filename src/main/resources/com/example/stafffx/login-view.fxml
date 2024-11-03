@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="408.0" prefWidth="577.0" spacing="20.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.LoginController">
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1101.0" spacing="20.0" style="-fx-background-color: #4A90E2;" styleClass="text-input" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.LoginController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
   <children>
-    <TextField fx:id="emailField" promptText="Email" />
-    <PasswordField fx:id="passwordField" promptText="Password" />
-      <Label fx:id="msgText" />
-    <Button fx:id="loginButton" onAction="#handleLoginButtonAction" text="Login" />
+      <StackPane alignment="CENTER">
+         <children>
+            <Pane prefHeight="312.0" prefWidth="537.0">
+               <children>
+                  <Label fx:id="msgText" layoutX="378.0" layoutY="143.0" prefHeight="26.0" prefWidth="321.0" style="-fx-text-fill: #D80000; -fx-font-weight: bold; -fx-alignment: center;" styleClass="danger" />
+                <TextField fx:id="emailField" layoutX="450.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Email" styleClass="text-field" />
+                <PasswordField fx:id="passwordField" layoutX="450.0" layoutY="94.0" prefHeight="26.0" prefWidth="240.0" promptText="Password" styleClass="text-field" />
+                <Button fx:id="loginButton" layoutX="504.0" layoutY="177.0" onAction="#handleLoginButtonAction" text="Login">
+                     <styleClass>
+                        <String fx:value="buttonxxx" />
+                        <String fx:value="menu-button" />
+                     </styleClass></Button>
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
   </children>
 </VBox>

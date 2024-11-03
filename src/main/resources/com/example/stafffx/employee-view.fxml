@@ -1,35 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="424.0" prefWidth="740.0" spacing="15.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.EmployeeController">
+<VBox alignment="CENTER" prefHeight="797.0" prefWidth="1276.0" spacing="15.0" style="-fx-background-color: #4A90E2;" styleClass="mainvbox" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.EmployeeController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <children>
-      <Pane prefHeight="498.0" prefWidth="769.0">
-         <children>
-            <StackPane layoutY="192.0" prefHeight="195.0" prefWidth="700.0">
-               <children>
-                    <!-- Table View for Employee Records -->
-                    <TableView fx:id="employeeTable" prefHeight="229.0" prefWidth="696.0">
-                        <columns>
-                            <TableColumn fx:id="idColumn" prefWidth="36.0" text="ID" />
-                            <TableColumn fx:id="nameColumn" prefWidth="98.0" text="Name" />
-                            <TableColumn fx:id="positionColumn" prefWidth="113.0" text="Email" />
-                            <TableColumn fx:id="salaryColumn" prefWidth="124.0" text="Salary(Monthly)" />
-                        <TableColumn prefWidth="146.0" text="Salary(Yearly)" />
-                        <TableColumn fx:id="nameColumn1" prefWidth="245.0" text="CreatedAt" />
-                        </columns>
-                    </TableView>
-               </children>
-            </StackPane>
-         </children>
-      </Pane>
+        <Pane prefHeight="699.0" prefWidth="1236.0">
+            <children>
+                  <!-- Table View for Employee Records -->
+                  <TableView fx:id="employeeTable" layoutX="-6.0" layoutY="359.0" onMouseClicked="#onclick" prefHeight="337.0" prefWidth="1243.0" style="-fx-selection-bar: red;" styleClass="filller">
+                      <columns>
+                          <TableColumn fx:id="idColumn" prefWidth="106.0" style="-fx-background-color: #4A90E2;" text="ID" />
+                          <TableColumn fx:id="nameColumn" prefWidth="289.0" style="-fx-background-color: #4A90E2;" text="Name" />
+                          <TableColumn fx:id="emailColumn" prefWidth="211.0" style="-fx-background-color: #4A90E2;" text="Email" />
+                          <TableColumn fx:id="salaryColumn" prefWidth="210.0" style="-fx-background-color: #4A90E2;" text="Salary(Monthly)" />
+                          <TableColumn fx:id="salaryYearlyColumn" prefWidth="232.0" style="-fx-background-color: #4A90E2;" text="Salary(Yearly)" />
+                          <TableColumn fx:id="createdColumn" prefWidth="194.0" style="-fx-background-color: #4A90E2;" text="CreatedAt" />
+                      </columns>
+                  </TableView>
+                <ImageView fx:id="logoutImage" fitHeight="26.0" fitWidth="55.0" layoutX="1147.0" layoutY="27.0" onMouseClicked="#logoutButtonPress" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://img.icons8.com/?size=100&amp;id=2445&amp;format=png&amp;color=000000" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="backButton" fitHeight="26.0" fitWidth="26.0" layoutX="14.0" layoutY="27.0" onMouseClicked="#ongoBackButtonPress" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://img.icons8.com/?size=100&amp;id=1806&amp;format=png&amp;color=000000" />
+                    </image>
+                </ImageView>
+            <Label fx:id="usernameLabel" layoutX="157.0" layoutY="58.0" prefHeight="26.0" prefWidth="182.0" style="-fx-font-weight: bold; -fx-text-fill: white;" styleClass="text-blue" />
+            <Label layoutX="240.0" layoutY="84.0" prefHeight="18.0" prefWidth="246.0" />
+            <Label layoutX="118.0" layoutY="62.0" prefHeight="18.0" prefWidth="45.0" style="-fx-text-fill: white;" text="Hello" />
+                <ImageView fx:id="savebutton" fitHeight="26.0" fitWidth="26.0" layoutX="1080.0" layoutY="324.0" onMouseClicked="#ondelete" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://img.icons8.com/?size=100&amp;id=67884&amp;format=png&amp;color=000000" />
+
+                    </image>
+                </ImageView>
+
+                <ImageView fx:id="refreshbutton" fitHeight="26.0" fitWidth="26.0" layoutX="1118.0" layoutY="324.0" onMouseClicked="#onrefresh" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://img.icons8.com/?size=100&amp;id=14296&amp;format=png&amp;color=000000" />
+                    </image>
+                </ImageView>
+
+                <ImageView fx:id="addbutton" fitHeight="26.0" fitWidth="26.0" layoutX="1160.0" layoutY="324.0" onMouseClicked="#oncreate" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="https://img.icons8.com/?size=100&amp;id=3&amp;format=png&amp;color=000000" />
+                    </image>
+                </ImageView>
+
+            </children>
+        </Pane>
     </children>
 </VBox>

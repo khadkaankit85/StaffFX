@@ -13,8 +13,8 @@ public class EmployeeDAO {
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, employee.getName());
             pstmt.setString(2, employee.getEmail());
-            pstmt.setString(3, employee.getPassword());
-            pstmt.setString(4, employee.getPosition()); // Changed to position
+            pstmt.setString(3, "default_pass");
+            pstmt.setString(4, "unassigned"); // Changed to position
             pstmt.setInt(5, employee.getEmployeeId());
             pstmt.setDouble(6, employee.getAmount());
             pstmt.executeUpdate();

@@ -1,7 +1,6 @@
 package com.example.stafffx.DAO;
 
-import com.example.stafffx.Model.Admin;
-
+import com.example.stafffx.Model.Admin; // Assuming this has been modified to include new fields
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +9,14 @@ public class AdminDAO {
 
     // Create a new admin record
     public void createAdmin(Admin admin) {
-        String query = "INSERT INTO Admin (name, email, password, role) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO Admin (name, email, password, position, employee_id, amount) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, admin.getName());
             pstmt.setString(2, admin.getEmail());
-            pstmt.setString(3, admin.getPassword());
-            pstmt.setString(4, admin.getRole());
+            pstmt.setString(3, "default_pass");
+            pstmt.setString(4, "unassigned"); // Changed to position
+            pstmt.setInt(5, admin.getId());
+            pstmt.setDouble(6, admin.getAmount());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -33,7 +34,10 @@ public class AdminDAO {
                 admin.setName(rs.getString("name"));
                 admin.setEmail(rs.getString("email"));
                 admin.setPassword(rs.getString("password"));
-                admin.setRole(rs.getString("role"));
+                admin.setPosition(rs.getString("position")); // Changed to position
+                admin.setCreatedAt(rs.getTimestamp("created_at"));
+                admin.setAmount(rs.getDouble("amount"));
+                admin.setPaymentDate(rs.getTimestamp("payment_date")); // Assuming you have this method
                 admins.add(admin);
             }
         } catch (SQLException e) {
@@ -44,13 +48,15 @@ public class AdminDAO {
 
     // Update an existing admin record
     public void updateAdmin(Admin admin) {
-        String query = "UPDATE Admin SET name = ?, email = ?, password = ?, role = ? WHERE id = ?";
+        String query = "UPDATE Admin SET name = ?, email = ?, password = ?, position = ?, employee_id = ?, amount = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setString(1, admin.getName());
             pstmt.setString(2, admin.getEmail());
             pstmt.setString(3, admin.getPassword());
-            pstmt.setString(4, admin.getRole());
-            pstmt.setInt(5, admin.getId());
+            pstmt.setString(4, admin.getPosition()); // Changed to position
+            pstmt.setInt(5, admin.getEmployeeId());
+            pstmt.setDouble(6, admin.getAmount());
+            pstmt.setInt(7, admin.getId());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,7 +87,11 @@ public class AdminDAO {
                     admin.setName(rs.getString("name"));
                     admin.setEmail(rs.getString("email"));
                     admin.setPassword(rs.getString("password"));
-                    admin.setRole(rs.getString("role"));
+                    admin.setPosition(rs.getString("position")); // Changed to position
+                    admin.setCreatedAt(rs.getTimestamp("created_at"));
+                    admin.setId(rs.getInt("employee_id"));
+                    admin.setAmount(rs.getDouble("amount"));
+                    admin.setPaymentDate(rs.getTimestamp("payment_date")); // Assuming you have this method
                 }
             }
         } catch (SQLException e) {

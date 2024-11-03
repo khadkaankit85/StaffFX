@@ -33,10 +33,12 @@ public class LoginController {
         String email = emailField.getText();
         String password = passwordField.getText();
 
-        if (validateUser(email, password)) {
+        String role=validateUser(email,password);
+        if (role.equals("admin")|| role.equals("staff")) {
             // Change scene on the JavaFX Application Thread
-                MainController mainController = new MainController();
-//                mainController.setUsername(email); // Set the username in MainController
+                 MainController mainController = MainController.getInstance();
+                 mainController.setUsername(email);
+                  mainController.setRole(role);
                 mainController.changeSceneToAnother("dashboard-view.fxml", msgText);
         } else {
             msgText.setText("Invalid email or password. Please try again.");
@@ -44,24 +46,24 @@ public class LoginController {
     }
 
 
-    private boolean validateUser(String email, String password) {
+    private String validateUser(String email, String password) {
         try (Connection connection = DatabaseConnection.getConnection()) {
             String adminQuery = "SELECT * FROM Admin WHERE email = ? AND password = ?";
             String employeeQuery = "SELECT * FROM Employee WHERE email = ? AND password = ?";
 
             // Check Admin credentials
             if (checkCredentials(connection, adminQuery, email, password)) {
-                return true; // Successfully logged in as Admin
+                return "admin"; // Successfully logged in as Admin
             }
 
             // Check Employee credentials
-            if (checkCredentials(connection, employeeQuery, email, password)) {
-                return true; // Successfully logged in as Employee
+          else  if (checkCredentials(connection, employeeQuery, email, password)) {
+                return "staff"; // Successfully logged in as Employee
             }
         } catch (SQLException e) {
             System.out.println("Database error: " + e.getMessage());
         }
-        return false; // Login failed
+        return "invalid"; // Login failed
     }
 
     private boolean checkCredentials(Connection connection, String query, String email, String password) {

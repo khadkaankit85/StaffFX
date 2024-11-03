@@ -15,12 +15,13 @@ public class Employee {
 
     // Constructor
     public Employee() {}
-
     // Getters and Setters
     public int getId() {
         return id;
     }
-
+public boolean isCreatable() {
+    return name.length() > 3 && email.length() > 3 && amount > 0;
+}
     public void setId(int id) {
         this.id = id;
     }
@@ -80,11 +81,6 @@ public class Employee {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-
-    public Timestamp getPaymentDate() {
-        return paymentDate;
-    }
-
     public void setPaymentDate(Timestamp paymentDate) {
         this.paymentDate = paymentDate;
     }
@@ -92,4 +88,5 @@ public class Employee {
     public double getYearlySalary(){
         return amount*12;
     }
+
 }

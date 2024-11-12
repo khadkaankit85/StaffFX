@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" prefHeight="720.0" prefWidth="1101.0" spacing="20.0" style="-fx-background-color: #4A90E2;" styleClass="text-input" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.stafffx.Controller.SignupController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+  <children>
+      <StackPane alignment="CENTER">
+         <children>
+            <Pane prefHeight="312.0" prefWidth="537.0">
+               <children>
+                  <Label fx:id="msgText" layoutX="424.0" layoutY="164.0" prefHeight="26.0" prefWidth="321.0" style="-fx-text-fill: #D80000; -fx-font-weight: bold; -fx-alignment: center;" styleClass="danger" />
+                <TextField fx:id="emailField" layoutX="450.0" layoutY="58.0" prefHeight="26.0" prefWidth="240.0" promptText="Enter Your Email" styleClass="text-field" />
+                <PasswordField fx:id="passwordField" layoutX="450.0" layoutY="94.0" prefHeight="26.0" prefWidth="240.0" promptText="Enter Your Password" styleClass="text-field" />
+                <Button fx:id="signupButton" layoutX="504.0" layoutY="190.0" onAction="#handleSignupButtonPress" style="-fx-pref-width: 100; -fx-border-radius: 10; -fx-pref-height: 30;" text="Sign Up">
+                     <styleClass>
+                        <String fx:value="buttonxxx" />
+                        <String fx:value="menu-button" />
+                     </styleClass></Button>
+                  <TextField fx:id="nameField" layoutX="450.0" layoutY="21.0" prefHeight="26.0" prefWidth="240.0" promptText="Enter Your Name" styleClass="text-field" />
+                  <PasswordField fx:id="passwordField1" layoutX="450.0" layoutY="130.0" prefHeight="26.0" prefWidth="240.0" promptText="Confirm Your Password" styleClass="text-field" />
+                  <Label layoutX="511.0" layoutY="234.0" onMouseClicked="#gotoLoginPage" style="-fx-text-fill: white;" text="Back to Login " />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+  </children>
+</VBox>

@@ -3,6 +3,8 @@ module com.example.stafffx {
     requires javafx.fxml;
     requires java.sql;
     requires jdk.compiler;
+    requires kotlin.stdlib;
+    requires annotations;
 
     // Export for access in tests or external modules
     exports com.example.stafffx.Model;

@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -79,4 +80,9 @@ public class LoginController {
     }
 
 
+    public void gotoSignupPage(MouseEvent mouseEvent) {
+        MainController mainController = MainController.getInstance();
+        mainController.changeSceneToAnother("signup-view.fxml", msgText);
+
+    }
 }

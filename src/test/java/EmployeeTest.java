@@ -14,6 +14,5 @@ public class EmployeeTest {
         double expectedSalary=monthlySalary*12;
 
         assertEquals(expectedSalary,yearlySalary,0.01,"The yearly salary amount is incorrect");
-
     }
 }

@@ -22,11 +22,12 @@
                   <Label fx:id="msgText" layoutX="378.0" layoutY="143.0" prefHeight="26.0" prefWidth="321.0" style="-fx-text-fill: #D80000; -fx-font-weight: bold; -fx-alignment: center;" styleClass="danger" />
                 <TextField fx:id="emailField" layoutX="450.0" layoutY="52.0" prefHeight="26.0" prefWidth="240.0" promptText="Email" styleClass="text-field" />
                 <PasswordField fx:id="passwordField" layoutX="450.0" layoutY="94.0" prefHeight="26.0" prefWidth="240.0" promptText="Password" styleClass="text-field" />
-                <Button fx:id="loginButton" layoutX="504.0" layoutY="177.0" onAction="#handleLoginButtonAction" text="Login">
+                <Button fx:id="loginButton" layoutX="504.0" layoutY="177.0" onAction="#handleLoginButtonAction" style="-fx-pref-width: 100; -fx-pref-height: 30;" text="Login">
                      <styleClass>
                         <String fx:value="buttonxxx" />
                         <String fx:value="menu-button" />
                      </styleClass></Button>
+                  <Label layoutX="527.0" layoutY="222.0" onMouseClicked="#gotoSignupPage" style="-fx-text-fill: white;" text="Sign Up?" />
                </children>
             </Pane>
          </children>

@@ -41,8 +41,9 @@ StaffFX is a JavaFX-based HR Management System designed to simplify and streamli
 
 ## Screenshots
 
-1. **Login Page**  
+1. **Login Page and Sign Up page**  
    ![Login Page](https://raw.githubusercontent.com/khadkaankit85/Assets/refs/heads/master/HRManagement/2.png)
+   ![Sign Up Page](https://raw.githubusercontent.com/khadkaankit85/Assets/refs/heads/master/HRManagement/1.png)
 
 2. **Dashboard**  
    ![Dashboard](https://github.com/khadkaankit85/Assets/blob/master/HRManagement/6.png?raw=true)
@@ -58,6 +59,7 @@ StaffFX is a JavaFX-based HR Management System designed to simplify and streamli
 
 6. **Database Structure**  
    ![Database](https://github.com/khadkaankit85/Assets/blob/master/HRManagement/7.png?raw=true)
+
 
 ## Usage
 
